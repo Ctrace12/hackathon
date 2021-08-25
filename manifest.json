@@ -1,0 +1,11 @@
+{
+  "manifest_version": 2,
+  "name": "To Be Determined bb B)",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*"],
+      "js": ["./main.js"]
+    }
+  ]
+}
