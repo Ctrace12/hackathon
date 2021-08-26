@@ -1,7 +1,19 @@
 function selection() {
   if (window.getSelection) return window.getSelection();
 }
-
+localStorage.toggle = 'off';
+window.onload = () => {
+  do {
+    const allItemsList = document.querySelectorAll('h1, h2, h3');
+    const arrOfInnerTexts = [];
+    for (const el of allItemsList) {
+      arrOfInnerTexts.push(el.innerText);
+    }
+    localStorage.itemsList = JSON.stringify(arrOfInnerTexts);
+  } while (!localStorage.toggle);
+};
+const storedPage = document.body.cloneNode(true);
+// let toggle = 'off';
 // document.body.addEventListener('click', () => {
 //   obj.leftClick.play();
 // });
@@ -158,7 +170,7 @@ for (let i = 0; i < letterArr.length; i++) {
 }
 obj.backSpace = new Audio();
 obj.backSpace.src = chrome.extension.getURL('assets/backSpaceAudio.m4a');
-const storedPage = document.body.cloneNode(true);
+
 function kanyeQuoteGenerator() {
   const forbiddenArr = [
     "George Bush doesn't care about black people",
@@ -167,8 +179,9 @@ function kanyeQuoteGenerator() {
     "One of my favorite of many things about what the Trump hat represents to me is that people can't tell me what to do because I'm black",
   ];
   let result;
-  const allItemsList = document.querySelectorAll('p, h1, h2, h3, h4, span');
-  for (let i = 0; i < allItemsList.length; i++) {
+
+  const newAllItemsList = document.querySelectorAll('h1, h2, h3');
+  for (let i = 0; i < newAllItemsList.length; i++) {
     do {
       fetch('https://api.kanye.rest/')
         .then((data) => {
@@ -176,9 +189,16 @@ function kanyeQuoteGenerator() {
         })
         .then((data) => {
           result = data.quote;
-          allItemsList[i].innerText = result;
+          newAllItemsList[i].innerText = result;
         });
     } while (forbiddenArr.includes(result));
+  }
+}
+function getCurrentHeaders() {
+  const currentHeaderList = document.querySelectorAll('h1, h2, h3');
+  const arrOfInnerTexts2 = JSON.parse(localStorage.itemsList);
+  for (let i = 0; i < currentHeaderList.length; i++) {
+    currentHeaderList[i].innerText = arrOfInnerTexts2[i];
   }
 }
 // kanyeQuoteGenerator();

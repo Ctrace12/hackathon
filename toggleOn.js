@@ -1,3 +1,4 @@
+console.log('toggleOn js ran');
 document.body.addEventListener('click', () => {
   obj.leftClick.play();
 });

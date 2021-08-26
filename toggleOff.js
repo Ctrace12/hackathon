@@ -1,1 +1,2 @@
-document.body.parentNode.replaceChild(storedPage, document.body);
+document.body.replaceWith(document.body.cloneNode(true));
+getCurrentHeaders();

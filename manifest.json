@@ -48,5 +48,5 @@
     "assets/backSpaceAudio.m4a",
     "assets/ryan.png"
   ],
-  "permissions": ["*://*/*"]
+  "permissions": ["*://*/*", "storage"]
 }
