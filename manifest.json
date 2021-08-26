@@ -5,9 +5,14 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./main.js"]
+      "js": ["./main.js", "./toggleOff.js", "./toggleOn.js"]
     }
   ],
+  "browser_action": {
+    "default_icon": "/assets/ryan.png",
+    "default_popup": "./popup.html",
+    "default_title": "to be named"
+  },
   "web_accessible_resources": [
     "assets/oof-1.m4a",
     "assets/oof-2.m4a",
@@ -42,5 +47,6 @@
     "assets/leftClickAudio.mp3",
     "assets/backSpaceAudio.m4a",
     "assets/ryan.png"
-  ]
+  ],
+  "permissions": ["*://*/*"]
 }

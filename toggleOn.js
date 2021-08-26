@@ -1,6 +1,3 @@
-function selection() {
-  if (window.getSelection) return window.getSelection();
-}
 document.body.addEventListener('click', () => {
   obj.leftClick.play();
 });
@@ -12,7 +9,7 @@ document.body.addEventListener('keydown', (event) => {
         obj[currentText.focusNode.nodeValue[i].toLowerCase()];
       console.log(currentText.focusNode.nodeValue[i]);
       if (currentText.focusNode.nodeValue[i] === ' ') {
-        console.log('space character');
+        continue;
       } else if (characterSound) {
         setTimeout(
           () => characterSound.play(),
@@ -116,68 +113,4 @@ document.body.addEventListener('keydown', (event) => {
       break;
   }
 });
-
-let letterArr = [
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
-  'leftClick',
-  'rightClick',
-  'space',
-];
-let obj = {};
-for (let i = 0; i < letterArr.length; i++) {
-  obj[letterArr[i]] = new Audio();
-  obj[letterArr[i]].src = chrome.extension.getURL(
-    `assets/${letterArr[i]}Audio.mp3`
-  );
-}
-obj.backSpace = new Audio();
-obj.backSpace.src = chrome.extension.getURL('assets/backSpaceAudio.m4a');
-
-function kanyeQuoteGenerator() {
-  const forbiddenArr = [
-    "George Bush doesn't care about black people",
-    'I feel like me and Taylor might still have sex',
-    "One day I'm gon' marry a porn star",
-    "One of my favorite of many things about what the Trump hat represents to me is that people can't tell me what to do because I'm black",
-  ];
-  let result;
-  const allItemsList = document.querySelectorAll('p, h1, h2, h3, h4, span');
-  for (let i = 0; i < allItemsList.length; i++) {
-    do {
-      fetch('https://api.kanye.rest/')
-        .then((data) => {
-          return data.json();
-        })
-        .then((data) => {
-          result = data.quote;
-          allItemsList[i].innerText = result;
-        });
-    } while (forbiddenArr.includes(result));
-  }
-}
 kanyeQuoteGenerator();
