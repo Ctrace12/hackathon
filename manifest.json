@@ -4,8 +4,43 @@
   "version": "1.0",
   "content_scripts": [
     {
-      "matches": ["https://www.google.com/*"],
+      "matches": ["<all_urls>"],
       "js": ["./main.js"]
     }
+  ],
+  "web_accessible_resources": [
+    "assets/oof-1.m4a",
+    "assets/oof-2.m4a",
+    "assets/aAudio.mp3",
+    "assets/bAudio.mp3",
+    "assets/cAudio.mp3",
+    "assets/dAudio.mp3",
+    "assets/eAudio.mp3",
+    "assets/fAudio.mp3",
+    "assets/gAudio.mp3",
+    "assets/hAudio.mp3",
+    "assets/iAudio.mp3",
+    "assets/jAudio.mp3",
+    "assets/kAudio.mp3",
+    "assets/lAudio.mp3",
+    "assets/mAudio.mp3",
+    "assets/nAudio.mp3",
+    "assets/oAudio.mp3",
+    "assets/pAudio.mp3",
+    "assets/qAudio.mp3",
+    "assets/rAudio.mp3",
+    "assets/sAudio.mp3",
+    "assets/tAudio.mp3",
+    "assets/uAudio.mp3",
+    "assets/vAudio.mp3",
+    "assets/wAudio.mp3",
+    "assets/xAudio.mp3",
+    "assets/yAudio.mp3",
+    "assets/zAudio.mp3",
+    "assets/spaceAudio.mp3",
+    "assets/rightClickAudio.mp3",
+    "assets/leftClickAudio.mp3",
+    "assets/backSpaceAudio.m4a",
+    "assets/ryan.png"
   ]
 }
