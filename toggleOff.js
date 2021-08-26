@@ -1,4 +1,1 @@
-document.body.parentNode.replaceChild(
-  document.body.cloneNode(true),
-  document.body
-);
+document.body.parentNode.replaceChild(storedPage, document.body);
