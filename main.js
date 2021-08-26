@@ -1,105 +1,120 @@
-//   const bodyYoutube = document.querySelector('#content');
-console.log('ran');
-
-//add event listener to keyboard on document on document.body?
-document.body.addEventListener('click', () => obj.leftClick.play());
+function selection() {
+  if (window.getSelection) return window.getSelection();
+}
+document.body.addEventListener('click', () => {
+  obj.leftClick.play();
+});
+document.body.addEventListener('keydown', (event) => {
+  if (event.code === 'Tab') {
+    let currentText = selection();
+    console.log(currentText);
+    for (let i = currentText.anchorOffset; i < currentText.focusOffset; i++) {
+      const characterSound =
+        obj[currentText.focusNode.nodeValue[i].toLowerCase()];
+      if (characterSound) {
+        setTimeout(
+          () => characterSound.play(),
+          (i - currentText.anchorOffset) * 400
+        );
+      } else {
+        setTimeout(
+          () => obj.backSpace.play(),
+          (i - currentText.anchorOffset) * 400 - 400
+        );
+      }
+    }
+  }
+});
 document.body.addEventListener('contextmenu', () => obj.rightClick.play());
 document.body.addEventListener('keydown', (event) => {
   switch (event.code) {
     case 'KeyA':
-      obj.a.play(); //aAudio.play()
+      obj.a.play();
       break;
     case 'KeyB':
-      obj.b.play(); //bAudio.play()
+      obj.b.play();
       break;
     case 'KeyC':
-      obj.c.play(); //cAudio.play();
+      obj.c.play();
       break;
     case 'KeyD':
-      obj.d.play(); //dAudio.play();
+      obj.d.play();
       break;
     case 'KeyE':
-      obj.e.play(); //eAudio.play();
+      obj.e.play();
       break;
     case 'KeyF':
-      obj.f.play(); //fAudio.play();
+      obj.f.play();
       break;
     case 'KeyG':
-      obj.g.play(); //gAudio.play();
+      obj.g.play();
       break;
     case 'KeyH':
-      obj.h.play(); //hAudio.play();
+      obj.h.play();
       break;
     case 'KeyI':
-      obj.i.play(); //iAudio.play();
+      obj.i.play();
       break;
     case 'KeyJ':
-      obj.j.play(); //jAudio.play();
+      obj.j.play();
       break;
     case 'KeyK':
-      obj.k.play(); //kAudio.play();
+      obj.k.play();
       break;
     case 'KeyL':
-      obj.l.play(); //lAudio.play();
-      // obj[l].play();
+      obj.l.play();
       break;
     case 'KeyM':
-      obj.m.play(); //mAudio.play();
+      obj.m.play();
       break;
     case 'KeyN':
-      obj.n.play(); //nAudio.play();
+      obj.n.play();
       break;
     case 'KeyO':
-      obj.o.play(); //oAudio.play();
+      obj.o.play();
       break;
     case 'KeyP':
-      obj.p.play(); //pAudio.play();
+      obj.p.play();
       break;
     case 'KeyQ':
-      obj.q.play(); //qAudio.play();
+      obj.q.play();
       break;
     case 'KeyR':
-      obj.r.play(); //rAudio.play();
+      obj.r.play();
       break;
     case 'KeyS':
-      obj.s.play(); //sAudio.play();
+      obj.s.play();
       break;
     case 'KeyT':
-      obj.t.play(); //tAudio.play();
+      obj.t.play();
       break;
     case 'KeyU':
-      obj.u.play(); //uAudio.play();
+      obj.u.play();
       break;
     case 'KeyV':
-      obj.v.play(); //vAudio.play();
+      obj.v.play();
       break;
     case 'KeyW':
-      obj.w.play(); //wAudio.play();
+      obj.w.play();
       break;
     case 'KeyX':
-      obj.x.play(); //xAudio.play();
+      obj.x.play();
       break;
     case 'KeyY':
-      obj.y.play(); //
+      obj.y.play();
       break;
     case 'KeyZ':
-      obj.z.play(); //zAudio.play();
+      obj.z.play();
       break;
     case 'Space':
-      obj.space.play(); //spaceAudio.play();
+      obj.space.play();
       break;
     case 'Backspace':
       obj.backSpace.play();
       break;
   }
 });
-// let testAudio1 = new Audio(`hackathon/assets/oof-1.m4a`);
-// console.log(testAudio1);
-// testAudio1.crossOrigin = 'anonymous';
-// testAudio1.mediaPlayer = 'audioPlayer'
-// testAudio1.
-// /* <audio media-player="audioPlayer" autoplay controls="controls" preload="auto" id="audioElement" */}
-//                 // crossOrigin="anonymous" src="{{audio}}"></audio>
+
 let letterArr = [
   'a',
   'b',
@@ -131,8 +146,7 @@ let letterArr = [
   'rightClick',
   'space',
 ];
-let obj = {}; // i was thinking about this, there is no reason to repeat everything over and over
-//yeah i realized that, i think you have to make letter arr tho...
+let obj = {};
 for (let i = 0; i < letterArr.length; i++) {
   obj[letterArr[i]] = new Audio();
   obj[letterArr[i]].src = chrome.extension.getURL(
@@ -141,14 +155,28 @@ for (let i = 0; i < letterArr.length; i++) {
 }
 obj.backSpace = new Audio();
 obj.backSpace.src = chrome.extension.getURL('assets/backSpaceAudio.m4a');
-let myAudio = new Audio(); //chrome.runtime.getURL('hackathon/assets/oof-1.m4a'));
-myAudio.src = chrome.extension.getURL('assets/oof-1.m4a');
-let myAudio2 = new Audio();
-myAudio2.src = chrome.extension.getURL('assets/oof-2.m4a');
 
-window.onload(() => {
-  const imgArr = document.getElementsByTagName('img');
-  for (let i = 0; i < imgArr.length; i++) {
-    imgArr[i].src = chrome.extension.getURL('assets/ryan.png');
+function kanyeQuoteGenerator() {
+  console.log('iran');
+  const forbiddenArr = [
+    "George Bush doesn't care about black people",
+    'I feel like me and Taylor might still have sex',
+    "One day I'm gon' marry a porn star",
+    "One of my favorite of many things about what the Trump hat represents to me is that people can't tell me what to do because I'm black",
+  ];
+  let result;
+  const allItemsList = document.getElementsByTagName('h1');
+  for (let i = 0; i < allItemsList.length; i++) {
+    do {
+      fetch('https://api.kanye.rest/')
+        .then((data) => {
+          return data.json();
+        })
+        .then((data) => {
+          result = data.quote;
+          allItemsList[i].innerText = result;
+        });
+    } while (forbiddenArr.includes(result));
   }
-});
+}
+kanyeQuoteGenerator();
